@@ -25,26 +25,26 @@ Selecionar banco
 Select all na collection
 > db.collection_hotel.find()
 Result
-{ "_id" : "", "name" : "Gran Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
-{ "_id" : ObjectId("5af328308e5c1a27c0231586"), "name" : "Gran Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
-{ "_id" : ObjectId("5af344bb8e5c1a27c0231587"), "name" : "Gran Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
-{ "_id" : ObjectId("5af34d868e5c1a0f84494e07"), "name" : "Akktara Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
-{ "_id" : ObjectId("5af34f198e5c1a3278b8562d"), "name" : "Laverd Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
-{ "_id" : ObjectId("5af34f198e5c1a3278b8562e"), "name" : "Terrank Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
-{ "_id" : ObjectId("5af34f198e5c1a3278b8562f"), "name" : "Hakndsef Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
+{ "_id" : "", "name" : "Gran Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
+{ "_id" : ObjectId("5af328308e5c1a27c0231586"), "name" : "Gran Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
+{ "_id" : ObjectId("5af344bb8e5c1a27c0231587"), "name" : "Gran Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
+{ "_id" : ObjectId("5af34d868e5c1a0f84494e07"), "name" : "Akktara Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
+{ "_id" : ObjectId("5af34f198e5c1a3278b8562d"), "name" : "Laverd Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
+{ "_id" : ObjectId("5af34f198e5c1a3278b8562e"), "name" : "Terrank Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
+{ "_id" : ObjectId("5af34f198e5c1a3278b8562f"), "name" : "Hakndsef Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
 
 
 Inclusao de document
 > db.collection_hotel.insert({name:'New Hotel'});
 
 > db.collection_hotel.find()
-{ "_id" : "", "name" : "Gran Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
-{ "_id" : ObjectId("5af328308e5c1a27c0231586"), "name" : "Gran Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
-{ "_id" : ObjectId("5af344bb8e5c1a27c0231587"), "name" : "Gran Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
-{ "_id" : ObjectId("5af34d868e5c1a0f84494e07"), "name" : "Akktara Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
-{ "_id" : ObjectId("5af34f198e5c1a3278b8562d"), "name" : "Laverd Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
-{ "_id" : ObjectId("5af34f198e5c1a3278b8562e"), "name" : "Terrank Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
-{ "_id" : ObjectId("5af34f198e5c1a3278b8562f"), "name" : "Hakndsef Hotel", "_class" : "com.wordpress.carledwinj.springboot.powermock.model.Hotel" }
+{ "_id" : "", "name" : "Gran Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
+{ "_id" : ObjectId("5af328308e5c1a27c0231586"), "name" : "Gran Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
+{ "_id" : ObjectId("5af344bb8e5c1a27c0231587"), "name" : "Gran Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
+{ "_id" : ObjectId("5af34d868e5c1a0f84494e07"), "name" : "Akktara Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
+{ "_id" : ObjectId("5af34f198e5c1a3278b8562d"), "name" : "Laverd Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
+{ "_id" : ObjectId("5af34f198e5c1a3278b8562e"), "name" : "Terrank Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
+{ "_id" : ObjectId("5af34f198e5c1a3278b8562f"), "name" : "Hakndsef Hotel", "_class" : "com.wordpress.carledwinj.springboot.mock.model.Hotel" }
 { "_id" : ObjectId("5af360ab897313b10a3fc70a"), "name" : "New Hotel" }
 
 Select document by id

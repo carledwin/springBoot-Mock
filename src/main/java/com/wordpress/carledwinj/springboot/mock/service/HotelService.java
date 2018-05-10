@@ -1,4 +1,4 @@
-package com.wordpress.carledwinj.springboot.powermock.service;
+package com.wordpress.carledwinj.springboot.mock.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.wordpress.carledwinj.springboot.powermock.model.Hotel;
-import com.wordpress.carledwinj.springboot.powermock.repository.HotelRepository;
+import com.wordpress.carledwinj.springboot.mock.model.Hotel;
+import com.wordpress.carledwinj.springboot.mock.repository.HotelRepository;
 
 @Service
 public class HotelService {

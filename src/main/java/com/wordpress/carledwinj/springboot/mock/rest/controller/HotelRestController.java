@@ -1,5 +1,6 @@
-package com.wordpress.carledwinj.springboot.powermock.rest.controller;
+package com.wordpress.carledwinj.springboot.mock.rest.controller;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.wordpress.carledwinj.springboot.powermock.model.Hotel;
-import com.wordpress.carledwinj.springboot.powermock.service.HotelService;
+import com.wordpress.carledwinj.springboot.mock.model.Hotel;
+import com.wordpress.carledwinj.springboot.mock.service.HotelService;
 
 @RestController
 @RequestMapping(value="hotel")
@@ -39,9 +41,17 @@ public class HotelRestController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity create(@RequestBody Hotel hotel) {
+	public ResponseEntity<Void> create(@RequestBody Hotel hotel) {
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(hotelService.save(hotel));
+		Hotel savedHotel = hotelService.save(hotel);
+		
+		if(savedHotel == null) {
+			return ResponseEntity.noContent().build();
+		}
+		
+		URI uriLocation = ServletUriComponentsBuilder.fromCurrentContextPath().path("/hotel/{id}").buildAndExpand(savedHotel.getId()).toUri(); 
+		
+		return ResponseEntity.created(uriLocation).build();
 	}
 	
 	@PostMapping("/create-all")

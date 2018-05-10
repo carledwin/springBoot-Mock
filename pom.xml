@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.wordpress.carledwinj</groupId>
-	<artifactId>springBoot-powerMock</artifactId>
+	<artifactId>springBoot-Mock</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>springBoot-powerMock</name>
-	<description>Project for Spring Boot with PowerMock</description>
+	<name>springBoot-Mock</name>
+	<description>Project for Spring Boot with Mock</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

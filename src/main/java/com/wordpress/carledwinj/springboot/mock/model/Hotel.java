@@ -1,4 +1,4 @@
-package com.wordpress.carledwinj.springboot.powermock.model;
+package com.wordpress.carledwinj.springboot.mock.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,6 +12,11 @@ public class Hotel {
 	private String name;
 	
 	public Hotel() {}
+
+	public Hotel(String id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 
 	public String getId() {
 		return id;

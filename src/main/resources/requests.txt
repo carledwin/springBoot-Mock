@@ -4,3 +4,5 @@ GET http://localhost:8080/hotel/all
 
 POST http://localhost:8080/hotel/create BODY {"name":"Gran Hotel"}
 
+GET http://localhost:8080/hotel/5af34f198e5c1a3278b8562e
+
