@@ -2,6 +2,8 @@ package com.wordpress.carledwinj.springboot.mock.springtest.rest.controller;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -43,9 +45,26 @@ public class HotelRestControllerTest {
 	Hotel mockNewHotel = new Hotel("66565","New Hotel mock");
 	
 	String mockHotelBodyRequestPostJson = "{\"id\":\"66565\", \"name\":\"New Hotel mock\"}";
+	String responseExpected = "{\"id\":\"32334232\", \"name\":\"Mock 1 Hotel\"}";
+	String responseExpectedGetAll = "[{\"id\":\"1111\", \"name\":\"Mock 1 Hotel\"}, {\"id\":\"2222\", \"name\":\"Mock 2 Hotel\"}, {\"id\":\"3333\", \"name\":\"Mock 3 Hotel\"}]";
+	
+	private List<Hotel> mockHotels = java.util.Arrays.asList(new Hotel("1111", "Mock 1 Hotel"), new Hotel("2222", "Mock 2 Hotel"), new Hotel("3333", "Mock 3 Hotel"));
 	
 	@Test
-	public void restrieveDetailsForHotel() throws Exception{
+	public void getAll() throws Exception{
+		
+		Mockito.when(hotelService.findAll()).thenReturn(mockHotels);
+		
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/hotel").accept(CONTENT_TYPE_JSON);
+		
+		MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();
+		
+		LOGGER.info("GET Result: " + mvcResult.getResponse().getContentAsString());
+		JSONAssert.assertEquals(responseExpectedGetAll, mvcResult.getResponse().getContentAsString(), false);
+	}
+	
+	@Test
+	public void getById() throws Exception{
 		
 		Mockito.when(hotelService.findById(Mockito.anyString())).thenReturn(mockHotel);
 		
@@ -53,16 +72,13 @@ public class HotelRestControllerTest {
 		
 		MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();
 		
-		LOGGER.info(mvcResult.getResponse().getContentAsString());
-		
-		String responseExpected = "{\"id\":\"32334232\", \"name\":\"Mock 1 Hotel\"}";
-		
+		LOGGER.info("GET Result: " + mvcResult.getResponse().getContentAsString());
 		JSONAssert.assertEquals(responseExpected, mvcResult.getResponse().getContentAsString(), false);
 		
 	}
 	
 	@Test
-	public void createHotel() throws Exception{
+	public void put() throws Exception{
 		
 		Mockito.when(hotelService.save(Mockito.any(Hotel.class))).thenReturn(mockNewHotel);
 		
@@ -72,8 +88,12 @@ public class HotelRestControllerTest {
 		
 		MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
 		
+		LOGGER.info("POST Status: " + mockHttpServletResponse.getStatus());
 		assertEquals(HttpStatus.CREATED.value(), mockHttpServletResponse.getStatus());
+		
+		LOGGER.info("POST Location: " + mockHttpServletResponse.getHeader(HttpHeaders.LOCATION));
 		assertEquals("http://localhost/hotel/66565", mockHttpServletResponse.getHeader(HttpHeaders.LOCATION));
+		
 	}
 	
 }
