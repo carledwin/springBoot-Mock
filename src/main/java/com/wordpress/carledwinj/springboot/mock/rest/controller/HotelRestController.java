@@ -40,7 +40,7 @@ public class HotelRestController {
 		return ResponseEntity.ok().body(hotelService.findById(id));
 	}
 	
-	@PostMapping("/create")
+	@PostMapping
 	public ResponseEntity<Void> create(@RequestBody Hotel hotel) {
 		
 		Hotel savedHotel = hotelService.save(hotel);
@@ -54,10 +54,21 @@ public class HotelRestController {
 		return ResponseEntity.created(uriLocation).build();
 	}
 	
-	@PostMapping("/create-all")
+	@PostMapping("/all")
 	public ResponseEntity createAll(@RequestBody List<Hotel> hotels) {
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(hotelService.saveAll(hotels));
+		StringBuilder uriLocations = new StringBuilder("");
+		List<Hotel> savedHotels = hotelService.saveAll(hotels);
+			
+		if(savedHotels != null) {
+			
+			for(Hotel hotel : savedHotels) {
+				URI uriLocation = ServletUriComponentsBuilder.fromCurrentContextPath().path("/hotel/{id}").buildAndExpand(hotel.getId()).toUri();
+				 uriLocations.append(uriLocation.toString()).append(", ");
+			}
+		}
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(uriLocations);
 	}
 	
 	@PutMapping("/{id}")
